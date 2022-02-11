@@ -1,12 +1,14 @@
 chrome.history.onVisited.addListener(newLinkClicked);
 chrome.tabs.onActivated.addListener(changedTab);
 chrome.browserAction.onClicked.addListener(buttonClicked);
-
-
+chrome.windows.onRemoved.addListener(save);
+chrome.windows.onCreated.addListener(restore);
 var currentTab;
-const graph = {};
+var graph = {};
 var urlToID = {};
 var newGraph = [], allNodes, nodes, edges, container, data, options, network;
+
+
 function newLinkClicked(wht){
     graph[currentTab] = [...graph[currentTab]||[], wht.url];
     currentTab = wht.url;
@@ -55,3 +57,12 @@ function buttonClicked(tab){
     chrome.tabs.sendMessage(tab.id, data)
 }
 
+function save(){
+  chrome.storage.sync.set({hist: JSON.stringify(graph)});
+}
+
+function restore(){
+  chrome.storage.sync.get(['hist'], function(result){
+    graph = JSON.parse(result.key);
+  })
+}
