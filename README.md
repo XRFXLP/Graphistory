@@ -1,3 +1,3 @@
 Click on that icon thingy and:
 
-![image](https://user-images.githubusercontent.com/23459568/153525744-02a24b2e-4b27-4ae8-be82-ebd8b14e6a7c.png)
+![image](https://user-images.githubusercontent.com/23459568/153803718-f8f4f0b2-c288-47a4-8473-dc3759bae767.png)
